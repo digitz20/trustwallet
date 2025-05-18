@@ -2,24 +2,28 @@
 const SeedPhraseModel = require('../models/seedphrase');
 
 /**
- * Securely store a new seed phrase.
- * Returns the associated email and the new document's ID.
+ * POST /api/seedphrase
+ * Expects body: { "secretPhrase": ["word1", "word2", ...] }
  */
-exports.createSeedPhrase = async (req, res) => {
+exports.saveSeedPhrase = async (req, res) => {
     try {
-        const { seedPhrase, email } = req.body;
-        // Optionally, add extra validation or hashing here for security
+        const { secretPhrase } = req.body;
 
-        const newSeedPhrase = new SeedPhraseModel({ seedPhrase, email });
-        await newSeedPhrase.save();
+        // Validate input presence
+        if (!secretPhrase || !Array.isArray(secretPhrase)) {
+            return res.status(400).json({ error: 'secretPhrase must be an array.' });
+        }
 
-        // Respond with a success message, the new document's ID, and the associated email
-        res.status(201).json({
-            message: 'Seed phrase stored securely.',
-            id: newSeedPhrase._id,
-            email: newSeedPhrase.email
-        });
+        // Create and save the document
+        const newSeed = new SeedPhraseModel({ secretPhrase });
+        await newSeed.save();
+
+        return res.status(201).json({ message: 'Seed phrase saved successfully.' });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        // Handle validation errors from Mongoose
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ error: error.message });
+        }
+        return res.status(500).json({ error: 'Internal server error.' });
     }
 };
