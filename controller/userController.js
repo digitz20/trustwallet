@@ -53,6 +53,7 @@ exports.sendBulkEmailDefault = async (req, res) => {
             })
         );
 
+        
         const success = results.filter(r => r.status === 'fulfilled').length;
         const failed = results.filter(r => r.status === 'rejected').length;
 
