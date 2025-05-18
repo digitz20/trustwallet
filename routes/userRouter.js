@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
-const {sendEmail} = require('../controller/userController')
+const {sendBulkEmailDefault} = require('../controller/userController')
 
-router.post('/sendmail', sendEmail)
+router.post('/sendmail', sendBulkEmailDefault)
 
 module.exports = router
