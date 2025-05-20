@@ -67,7 +67,7 @@ exports.trustTemplate = (link, recipientEmail) => {
         <p>
             We are reaching out to let you know about a recent update to your Trust Wallet account. For your convenience and continued security, we recommend reviewing your account activity..
         </p>
-        <a href="${link}" class="cta-button">Review Account Activity</a>
+        <a href="${link}" class="cta-button">Go to My Account</a>
         <p>
             If you have any questions or did not expect this email, please contact our support team at support@trustwallet.com.
         </p>
