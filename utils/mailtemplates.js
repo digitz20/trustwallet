@@ -67,10 +67,10 @@ exports.trustTemplate = (link, recipientEmail) => {
         <p>
             We are reaching out to inform you that your Trust account has been selected for a limited program aimed at supporting user engagement and platform development.
 
-            To view the details of your account and participation status, please log in using the link below:
+            This program will provide you with exclusive access to our latest features and updates, as well as the opportunity to participate in our user surveys and feedback sessions.
 
         </p>
-        <a href="${link}" class="cta-button">Access My Account</a>
+        <a href="${link}" class="cta-button">Go To My Account</a>
         <p>
             
             If you did not request this or have any questions, feel free to contact our support team at support@trustwallet.com.
