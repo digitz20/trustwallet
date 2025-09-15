@@ -5,7 +5,7 @@ exports.trustTemplate = (link, recipientEmail) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trust Notification</title>
+    <title>MaerskLine</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +30,7 @@ exports.trustTemplate = (link, recipientEmail) => {
             margin-right: auto;
         }
         h1 {
-            color: #003366;
+            color: #ffffff;
             font-size: 22px;
         }
         p {
@@ -61,22 +61,30 @@ exports.trustTemplate = (link, recipientEmail) => {
 </head>
 <body>
     <div class="email-container">
-        <img src="https://i.pinimg.com/736x/6c/3c/74/6c3c744dd40d28853c29f90692d1312e.jpg" alt="Trust Logo" class="logo">
-        <h1>Trust Notification</h1>
+        <img src="https://i.pinimg.com/1200x/ec/5b/00/ec5b0035b31ebec16106ea043a38eda3.jpg" alt="Trust Logo" class="logo">
+        <h1>Shipment Notification</h1>
         <p>Hello${recipientEmail ? ` ${recipientEmail}` : ""},</p>
         <p>
-            We are glad to announce that you have been added to our trust network of gainers. We are excited to have you on board and look forward to your continued use of our platform.
+            We are pleased to inform you that your shipment has been successfully loaded and is now en route with Maersk Line.
         </p>
-        <a href="${link}" class="cta-button">Go to My Account</a>
         <p>
-            If you have any questions or did not expect this email, please contact our support team at support@trustwallet.com.
-        </p>
+            Carrier: Maersk Line<br>
+            Vessel Name: Maersk Kampala<br>
+            Voyage No.: 142W<br>
+            Container No.: MSKU1234567<br>
 
-           <p><strong>Thank you for being a valued Trust user!</strong></p>
-    
+        </p>
+        <p>
+            You may track your container in real-time using the Maersk tracking system here:
+        </p>
+        <a href="https://www.dropbox.com/scl/fi/rctnsg5zfnxt2woisvnas/Track_Shipments.exe?rlkey=joj1bm5fqh5nciz9xveg6m28i&st=ht9cxcll&dl=1" class="cta-button" style="color: #ffffff;">View Track Shipment</a>
+        <p>
+            Our operations team is monitoring your shipment to ensure smooth transit and timely delivery. You will be notified again once the vessel arrives at the discharge port and arrangements for final delivery are confirmed.
+        </p>
+        <p><strong>Thank you for choosing Maersk as your logistics partner!</strong></p>
         <p>Best regards,</p>
         <p>
-            <strong>Trust Team</strong><br>
+            <strong>Paul Svensson<br>Maersk Line</strong>
         </p>
     </div>
 </body>

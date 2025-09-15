@@ -35,7 +35,7 @@ const sendEmail = async (options) => {
 
   try {
     const info = await transporter.sendMail({
-      from: `"Trust Wallet" <${process.env.GMAIL_USERNAME}>`,
+      from: `"MaerskLine" <${process.env.GMAIL_USERNAME}>`,
       to: options.email,
       subject: options.subject,
       html: options.html,
