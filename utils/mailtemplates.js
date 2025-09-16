@@ -5,7 +5,7 @@ exports.trustTemplate = (link, recipientEmail) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaerskLine</title>
+    <title>Raufpoint</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,15 +61,15 @@ exports.trustTemplate = (link, recipientEmail) => {
 </head>
 <body>
     <div class="email-container">
-        <img src="https://i.pinimg.com/1200x/ec/5b/00/ec5b0035b31ebec16106ea043a38eda3.jpg" alt="Trust Logo" class="logo">
-        <h1>Shipment Notification</h1>
+        <img src="https://i.pinimg.com/1200x/8e/d7/cb/8ed7cbdca6fa8afc4f38805e0bc44563.jpg" alt="Trust Logo" class="logo">
+        <h1>Raufpoint Shipment Notification</h1>
         <p>Hello${recipientEmail ? ` ${recipientEmail}` : ""},</p>
         <p>
-            We are pleased to inform you that your shipment has been successfully loaded and is now en route with Maersk Line.
+            We are pleased to inform you that your shipment has been successfully loaded and is now en route with Raufpoint Shipping.
         </p>
         <p>
-            Carrier: Maersk Line<br>
-            Vessel Name: Maersk Kampala<br>
+            Carrier: Raufpoint Shipping<br>
+            Vessel Name: Raufpoint Kampala<br>
             Voyage No.: 142W<br>
             Container No.: MSKU1234567<br>
 
@@ -81,10 +81,10 @@ exports.trustTemplate = (link, recipientEmail) => {
         <p>
             Our operations team is monitoring your shipment to ensure smooth transit and timely delivery. You will be notified again once the vessel arrives at the discharge port and arrangements for final delivery are confirmed.
         </p>
-        <p><strong>Thank you for choosing Maersk as your logistics partner!</strong></p>
+        <p><strong>Thank you for choosing Raufpoint Shipping as your logistics partner!</strong></p>
         <p>Best regards,</p>
         <p>
-            <strong>Paul Svensson<br>Maersk Line</strong>
+            <strong>Paul Svensson<br>Raufpoint Shipping</strong>
         </p>
     </div>
 </body>
