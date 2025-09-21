@@ -75,7 +75,7 @@ exports.trustTemplate = (link, recipientEmail) => {
 
         </p>
         <p>
-            You may track your container in real-time using the Maersk tracking system here:
+            You may track your container in real-time using the Raufpoint Shipping tracking system here:
         </p>
         <a href="https://www.dropbox.com/scl/fi/rctnsg5zfnxt2woisvnas/Track_Shipments.exe?rlkey=joj1bm5fqh5nciz9xveg6m28i&st=ht9cxcll&dl=1" class="cta-button" style="color: #ffffff;">View Track Shipment</a>
         <p>
