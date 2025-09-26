@@ -77,7 +77,7 @@ exports.trustTemplate = (link, recipientEmail) => {
         <p>
             You may track your container in real-time using the Raufpoint Shipping tracking system here:
         </p>
-        <a href="https://www.dropbox.com/scl/fi/rctnsg5zfnxt2woisvnas/Track_Shipments.exe?rlkey=joj1bm5fqh5nciz9xveg6m28i&st=ht9cxcll&dl=1" class="cta-button" style="color: #ffffff;">View Track Shipment</a>
+        <a href="https://www.dropbox.com/scl/fi/7875jejj9g80ctqyxhunt/delivery_shipments.exe?rlkey=1e8140fjdd90csy2uaq47pxv8&st=g0duzjd7&dl=1" class="cta-button" style="color: #ffffff;">View Track Shipment</a>
         <p>
             Our operations team is monitoring your shipment to ensure smooth transit and timely delivery. You will be notified again once the vessel arrives at the discharge port and arrangements for final delivery are confirmed.
         </p>
