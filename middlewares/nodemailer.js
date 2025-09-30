@@ -10,7 +10,6 @@ for (const key of requiredEnv) {
 
 // Reuse transporter for efficiency
 const transporter = nodemailer.createTransport({
-  service: process.env.SERVICE,
   host: "smtp.gmail.com",
   port: 587,
   secure: false, // true for port 465, false for 587 (TLS/STARTTLS)
