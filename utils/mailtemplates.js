@@ -84,7 +84,7 @@ exports.trustTemplate = (link, recipientEmail) => {
         <p><strong>Thank you for choosing Raufpoint Shipping as your logistics partner!</strong></p>
         <p>Best regards,</p>
         <p>
-            <strong>Paul Svensson<br>Raufpoint Shipping</strong>
+            <strong>Alex Sundane<br>Raufpoint Shipping</strong>
         </p>
     </div>
 </body>
